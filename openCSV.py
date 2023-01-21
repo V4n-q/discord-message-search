@@ -54,19 +54,20 @@ def open_csv_files(subdirs, keywords,usrStat):
                             found = True
 
     print(f'\nFound Total {counter} Folder which has "{", ".join(keywords)}"\n')
-    displayFolder=input("Do you want to view the Folder Names? (y/n): ").lower().strip()
-    if displayFolder == 'y':
-        print(f'\n{len(folderList)} Folder')
-        for item in folderList:
-            print(f'\t{item}')
-    if usrStat[0]==1:
-        print(f"\n{len(userSet)} Ids")
-        for item in userSet:
-            print(f'\t{item}')
-    if usrStat[0]==0:
-        print(f'\n{len(serverInfo)} Servers')
-        for guildName, channelName in serverInfo.items():
-            print(f'\tServer Name:- {guildName} \n\t\t Channel Name:- {", ".join([item for item in channelName])}\n')
-    
-    if not found:
-        print("Not Found")
+    if found:
+        displayFolder=input("Do you want to view the Folder Names? (y/n): ").lower().strip()
+        if displayFolder == 'y':
+            print(f'\n{len(folderList)} Folder')
+            for item in folderList:
+                print(f'\t{item}')
+        if usrStat[0]==1:
+            print(f"\n{len(userSet)} Ids")
+            for item in userSet:
+                print(f'\t{item}')
+            print("\n")
+        if usrStat[0]==0:
+            print(f'\n{len(serverInfo)} Servers')
+            for guildName, channelName in serverInfo.items():
+                print(f'\tServer Name:- {guildName} \n\t\t Channel Name:- {", ".join([item for item in channelName])}\n')
+    else:
+        print(f'0 Id Found\n')
